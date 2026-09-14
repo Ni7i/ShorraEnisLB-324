@@ -9,6 +9,7 @@ app.secret_key = os.urandom(24)
 load_dotenv()
 PASSWORD = os.getenv("PASSWORD")
 entries = []
+HAPPINESS = ["😃", "🙂", "😐", "🙁", "😢"]
 
 
 @dataclass
@@ -20,7 +21,7 @@ class Entry:
 
 @app.route("/")
 def index():
-    return render_template("index.html", entries=entries)
+    return render_template("index.html", entries=entries, happiness=HAPPINESS)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -47,6 +48,8 @@ def logout():
 def add_entry():
     content = request.form.get("content")
     happiness = request.form.get("happiness", "")
+    if happiness not in HAPPINESS:
+        happiness = ""
     if content:
         entry = Entry(content=content, happiness=happiness)
         entries.append(entry)

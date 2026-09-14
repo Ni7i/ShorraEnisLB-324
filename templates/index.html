@@ -16,11 +16,9 @@
         <br>
         <label for="happiness">Happiness:</label>
         <select id="happiness" name="happiness">
-            <option value="😃">😃</option>
-            <option value="🙂">🙂</option>
-            <option value="😐" selected>😐</option>
-            <option value="🙁">🙁</option>
-            <option value="😢">😢</option>
+            {% for emoji in happiness %}
+            <option value="{{ emoji }}" {% if emoji == "😐" %}selected{% endif %}>{{ emoji }}</option>
+            {% endfor %}
         </select>
         <button type="submit">Add Entry</button>
     </form>

@@ -43,3 +43,11 @@ def test_add_entry_with_happiness(client):
     assert entry is not None
     assert entry.content == "Test Entry Content"
     assert entry.happiness == "😃"
+
+
+def test_add_entry_with_invalid_happiness(client):
+    # Values that are not offered in the form are not stored
+    client.post("/add_entry", data={"content": "Test Entry Content", "happiness": "x"})
+
+    entry = entries[0]
+    assert entry.happiness == ""
