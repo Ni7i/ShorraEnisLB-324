@@ -1,0 +1,89 @@
+name: Anforderung
+description: Neue Funktionalität als Anforderung erfassen
+title: "<Zielsystem> <muss|soll|wird> …"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Aufbau:** Zielsystem + Priorität + Systemaktivität + allf. Ergänzungen + Funktionalität + Bedingungen
+
+        **Beispiel:** Reflect Media Player *muss* dem Benutzer die Möglichkeit bieten, J3D Szenengraphen aus einer wrml-Datei über das Netzwerk *zu laden*, falls der Benutzer eingeschrieben ist.
+
+        Den Typ (Funktionale Anforderung, Qualitätsanforderung, Randanforderung) nach dem Erstellen unter **Labels** setzen.
+
+  - type: input
+    id: zielsystem
+    attributes:
+      label: Zielsystem
+      description: Betroffenes (Teil-)System
+      placeholder: Tagebbbuch
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioritaet
+    attributes:
+      label: Priorität
+      options:
+        - muss (hoch)
+        - soll (mittel)
+        - wird (niedrig)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: systemaktivitaet
+    attributes:
+      label: Systemaktivität
+      options:
+        - "selbständige Systemaktivität (ohne Zusatz)"
+        - "Benutzerfunktion: dem <Rolle> die Möglichkeit bieten"
+        - "Schnittstelle: fähig sein"
+    validations:
+      required: true
+
+  - type: input
+    id: rolle
+    attributes:
+      label: Rolle
+      description: Nur bei Benutzerfunktion
+      placeholder: Benutzer, Administrator
+
+  - type: input
+    id: ergaenzungen
+    attributes:
+      label: Ergänzungen
+      description: Objekt und nähere Angaben zur Funktionalität (optional)
+      placeholder: einem Eintrag eine Stimmung
+
+  - type: input
+    id: funktionalitaet
+    attributes:
+      label: Funktionalität
+      description: Verb im Infinitiv
+      placeholder: zuzuordnen
+    validations:
+      required: true
+
+  - type: input
+    id: bedingungen
+    attributes:
+      label: Bedingungen
+      description: Zeitlich mit «wenn», logisch mit «falls» (optional)
+      placeholder: falls der Benutzer eingeschrieben ist
+
+  - type: textarea
+    id: anforderung
+    attributes:
+      label: Anforderung
+      description: Die Angaben oben als ganzer Satz
+      placeholder: Tagebbbuch muss dem Benutzer die Möglichkeit bieten, einem Eintrag eine Stimmung zuzuordnen, falls der Benutzer eingeschrieben ist.
+    validations:
+      required: true
+
+  - type: textarea
+    id: testfall
+    attributes:
+      label: Testfall
+      description: Testfall oder Abnahmekriterien
+      render: python
