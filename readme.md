@@ -54,7 +54,7 @@ az webapp config appsettings set -g rg-lb324 -n shorraenis-lb324 --settings PASS
 
 Die Anmeldung von GitHub bei Azure läuft über OpenID Connect ohne gespeichertes Passwort:
 - Verwaltete Identität `id-lb324-github` mit der Rolle *Website Contributor* auf der Web App
-- Federated Credential für `repo:Ni7i/ShorraEnisLB-324:ref:refs/heads/main`, dadurch darf nur der `main`-Ast ausliefern
+- Federated Credential für den Subject `repo:Ni7i@187387582/ShorraEnisLB-324@1369356001:ref:refs/heads/main`, dadurch darf nur der `main`-Ast ausliefern (GitHub sendet Benutzer und Ablage mit ihren IDs)
 - GitHub-Secrets `AZURE_CLIENT_ID`, `AZURE_TENANT_ID` und `AZURE_SUBSCRIPTION_ID` (*Settings* → *Secrets and variables* → *Actions*)
 
 Weitere Einstellungen der Web App:
