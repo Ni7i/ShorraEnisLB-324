@@ -9,6 +9,7 @@ import pytest
 def client():
     app.config["TESTING"] = True
     client = app.test_client()
+    entries.clear()
 
     yield client
 
