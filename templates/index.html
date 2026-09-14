@@ -14,12 +14,18 @@
     <form method="POST" action="/add_entry">
         <textarea name="content" rows="4" cols="50" placeholder="Write your entry here..."></textarea>
         <br>
+        <label for="happiness">Happiness:</label>
+        <select id="happiness" name="happiness">
+            {% for emoji in happiness %}
+            <option value="{{ emoji }}" {% if emoji == "😐" %}selected{% endif %}>{{ emoji }}</option>
+            {% endfor %}
+        </select>
         <button type="submit">Add Entry</button>
     </form>
     <h2>Entries:</h2>
     <ul>
         {% for entry in entries %}
-        <li>{{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') }} - {{ entry.content }}</li>
+        <li>{{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') }} {{ entry.happiness }} - {{ entry.content }}</li>
         {% endfor %}
     </ul>
 
